@@ -1,20 +1,20 @@
-# Usa a imagem oficial do Node.js como base
-FROM node:18-alpine
+# Use a imagem base do Node.js
+FROM node:16
 
-# Define o diretório de trabalho dentro do contêiner
+# Crie o diretório da aplicação
 WORKDIR /app
 
-# Copia os arquivos package.json e package-lock.json para o contêiner
-COPY package*.json ./
+# Copie os arquivos de configuração e dependências
+COPY package.json package-lock.json ./
 
-# Instala as dependências do projeto
+# Instale as dependências
 RUN npm ci
 
-# Copia o restante dos arquivos do projeto para o contêiner
+# Copie o restante dos arquivos da aplicação
 COPY . .
 
-# Expõe a porta 3000
+# Exponha a porta que a aplicação vai usar
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
+# Comando para rodar a aplicação
 CMD ["node", "app.js"]
