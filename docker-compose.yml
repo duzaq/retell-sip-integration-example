@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - LOGLEVEL=${LOGLEVEL}
+      - HTTP_PORT=${HTTP_PORT}
+      - JAMBONZ_ACCOUNT_SID=${JAMBONZ_ACCOUNT_SID}
+      - JAMBONZ_API_KEY=${JAMBONZ_API_KEY}
+      - JAMBONZ_REST_API_BASE_URL=${JAMBONZ_REST_API_BASE_URL}
+      - RETELL_API_KEY=${RETELL_API_KEY}
+      - RETELL_AGENT_ID=${RETELL_AGENT_ID}
+    volumes:
+      - .:/app
